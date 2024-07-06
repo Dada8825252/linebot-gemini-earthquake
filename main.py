@@ -76,7 +76,7 @@ async def handle_callback(request: Request):
     # get request body as text
     body = await request.body()
     body = body.decode()
-
+    print(body)
     try:
         events = parser.parse(body, signature)
     except InvalidSignatureError:
