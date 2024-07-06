@@ -81,9 +81,10 @@ async def handle_callback(request: Request):
         events = parser.parse(body, signature)
     except InvalidSignatureError:
         raise HTTPException(status_code=400, detail="Invalid signature")
-
+    print('=========================')
     for event in events:
         logging.info(event)
+        print(event)
         if not isinstance(event, MessageEvent):
             continue
         if not isinstance(event.message, TextMessageContent):
